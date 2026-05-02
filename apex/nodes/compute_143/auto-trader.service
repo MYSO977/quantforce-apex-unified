@@ -1,0 +1,16 @@
+[Unit]
+Description=Fed-Trading Auto Trader - 模拟盘自动交易
+After=network.target
+
+[Service]
+User=heng
+WorkingDirectory=/home/heng/fed-trading
+Environment=PYTHONPATH=/home/heng/fed-trading
+EnvironmentFile=/home/heng/.quant_env
+ExecStart=/home/heng/fed-trading/venv/bin/python3 /home/heng/fed-trading/src/auto_trader.py
+Restart=always
+RestartSec=30
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

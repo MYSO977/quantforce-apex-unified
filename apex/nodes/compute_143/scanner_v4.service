@@ -1,0 +1,17 @@
+[Unit]
+Description=Scanner v4 - Finnhub news scanner
+After=network.target
+
+[Service]
+User=heng
+WorkingDirectory=/home/heng
+EnvironmentFile=/home/heng/.quant_env
+ExecStart=/dev/shm/qf_venv/bin/python3 /home/heng/news_scanner_v4.py
+Restart=always
+RestartSec=10
+Environment=FINNHUB_API_KEY=${FINNHUB_API_KEY}
+Environment=GROQ_API_KEY=${GROQ_API_KEY}
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

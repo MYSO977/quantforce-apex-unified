@@ -1,0 +1,12 @@
+[Unit]
+Description=Rebuild qf_venv in /dev/shm on boot
+After=network.target
+
+[Service]
+Type=oneshot
+User=heng
+ExecStart=/bin/bash -c 'python3 -m venv /dev/shm/qf_venv && /dev/shm/qf_venv/bin/pip install -q --upgrade pip && /dev/shm/qf_venv/bin/pip install -q psycopg2-binary pytz ib_insync groq requests pandas numpy pyzmq python-dotenv ollama yfinance lxml feedparser'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

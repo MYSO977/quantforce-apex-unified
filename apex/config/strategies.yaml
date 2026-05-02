@@ -1,0 +1,72 @@
+# QuantForce Apex — Strategy Plugin Configuration
+# enabled: false = skip loading
+# shadow: true = log signals only, no real orders
+# params: override defaults from strategy PARAMS dict
+
+strategies:
+
+  # ── Phase 0/1: Active (paper then live) ──────────────────────
+  - id: momentum_swing
+    enabled: true
+    shadow: false   # LIVE — validated 2026-04-22
+    product: stock
+    params:
+      rvol_min: 2.0
+      atr_stop: 1.5
+      rr_target: 2.0
+      lookback: 20
+      min_price: 3.0
+      max_price: 20.0
+
+  - id: news_breakout
+    enabled: true
+    shadow: true
+    product: stock
+    params:
+      news_min: 7.5
+      gap_min_pct: 3.0
+      rvol_min: 1.5
+      atr_stop: 1.2
+      rr_target: 2.5
+
+  - id: opening_range_breakout
+    enabled: true
+    shadow: true
+    product: stock
+    params:
+      orb_minutes: 15
+      rvol_min: 1.5
+      volume_confirm: 1.5
+      max_range_pct: 4.0
+
+  - id: sector_rotation
+    enabled: true
+    shadow: true
+    product: etf
+    params:
+      lookback_weeks: 4
+      top_n: 2
+      rebalance_day: 0      # Monday
+
+  # ── Phase 2: Options (account >= $2,000) ─────────────────────
+  - id: call_buy
+    enabled: false          # Activate when account >= $2,000
+    shadow: true
+    product: option
+
+  # ── Phase 3: Forex/Futures (account >= $3,000) ───────────────
+  - id: fx_trend
+    enabled: false
+    shadow: true
+    product: forex
+
+  - id: mes_trend
+    enabled: false
+    shadow: true
+    product: futures
+
+  # ── Crypto: always shadow until manually approved ─────────────
+  - id: crypto_momentum
+    enabled: false
+    shadow: true
+    product: crypto

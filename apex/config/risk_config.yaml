@@ -1,0 +1,29 @@
+# QuantForce Apex — Risk Gate Configuration
+# WARNING: These are the only knobs. Do not add logic to risk_gate.py directly.
+
+account:
+  initial_balance:    1200.0
+  currency:           USD
+  type:               cash           # cash = no margin, T+1 settlement
+
+risk:
+  daily_loss:         0.02           # 2% daily loss circuit breaker
+  max_single_pct:     0.10           # Max 10% per position
+  max_exposure_pct:   0.90           # Max 90% total exposure
+  risk_per_trade_pct: 0.025          # 2.5% account risk per trade (~$30)
+  min_rr:             1.5            # Minimum risk/reward ratio
+  cooldown_minutes:   60             # Same-symbol cooldown
+
+time_windows:
+  entry_start:  "09:35"             # ET — T-014 buffer
+  entry_end:    "15:45"             # ET — no new entries after this
+
+product_thresholds:
+  options_min_account:  2000.0
+  futures_min_account:  3000.0
+  crypto_max_notional:  200.0
+
+position_sizing:
+  method:        atr_based          # atr_based | fixed_pct | kelly
+  atr_stop_mult: 1.5
+  max_cash_pct:  0.70               # Single position <= 70% of available cash

@@ -1,0 +1,5 @@
+# Manually excluded symbols
+# Add tickers here to prevent any strategy from generating signals
+
+symbols:
+  []   # Empty by default — add as needed, e.g.: - SQQQ

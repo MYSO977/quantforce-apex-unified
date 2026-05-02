@@ -1,0 +1,30 @@
+# QuantForce Apex — Universe Configuration
+
+russell2000:
+  source:        iShares_IWV        # CSV from iShares IWV ETF holdings
+  update_freq:   quarterly
+  table:         universe_whitelist
+
+liquidity_filter:
+  min_avg_volume_30d:  500000
+  min_price:           3.0
+  max_price:           80.0
+
+daily_candidate_filter:
+  min_rvol:      1.5
+  min_atr_move:  1.0               # ATR units of price movement today
+  max_candidates: 200              # Cap to avoid overload
+
+etf_universe:
+  sectors:
+    - XLK   # Technology
+    - XLV   # Healthcare
+    - XLF   # Financials
+    - XLE   # Energy
+    - XLI   # Industrials
+    - XLY   # Consumer Discretionary
+    - XLP   # Consumer Staples
+    - XLB   # Materials
+    - XLU   # Utilities
+    - XLRE  # Real Estate
+    - XLC   # Communication

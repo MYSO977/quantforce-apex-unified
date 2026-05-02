@@ -1,0 +1,19 @@
+[Unit]
+Description=QuantForce Apex — Signal Fusion
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=heng
+WorkingDirectory=/home/heng/quantforce-apex
+Environment=PYTHONPATH=/home/heng/quantforce-apex
+EnvironmentFile=-/home/heng/quantforce-apex/config/.env
+ExecStart=/usr/bin/python3 /home/heng/quantforce-apex/nodes/brain_18/signal_fusion.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

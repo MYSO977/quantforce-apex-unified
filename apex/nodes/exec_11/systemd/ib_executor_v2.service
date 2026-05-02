@@ -1,0 +1,25 @@
+[Unit]
+Description=QuantForce Apex — IB Executor v2
+After=network.target ibc.service
+Wants=ibc.service
+
+[Service]
+Type=simple
+User=heng
+WorkingDirectory=/home/heng/quantforce-apex
+Environment=PYTHONPATH=/home/heng/quantforce-apex
+Environment=IB_HOST=127.0.0.1
+Environment=IB_PORT=4002
+Environment=IB_CLIENT_ID=20
+Environment=QF_ZMQ_PORT=5558
+Environment=QF_PG_HOST=192.168.0.18
+Environment=QF_PG_PASS=newpassword123
+ExecStartPre=/bin/bash -c 'fuser -k 5558/tcp 2>/dev/null || true; sleep 1'
+ExecStart=/usr/bin/python3 /home/heng/quantforce-apex/nodes/exec_11/ib_executor_v2.py
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

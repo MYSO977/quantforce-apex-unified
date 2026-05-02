@@ -1,0 +1,15 @@
+[Unit]
+Description=Tech Scanner - QuantForce Labs
+After=network.target
+
+[Service]
+User=heng
+WorkingDirectory=/home/heng
+EnvironmentFile=/home/heng/.quant_env
+ExecStart=/dev/shm/qf_venv/bin/python3 /home/heng/tech_scanner.py
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=QuantForce Apex — Signal Fusion (Notify + Execute Mode)
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=heng
+WorkingDirectory=/home/heng/quantforce-apex
+Environment=PYTHONPATH=/home/heng/quantforce-apex
+Environment=QF_PG_HOST=192.168.0.18
+Environment=QF_PG_PASS=newpassword123
+Environment=QF_EXECUTOR_HOST=192.168.0.11
+Environment=QF_ZMQ_PORT=5558
+ExecStart=/usr/bin/python3 /home/heng/quantforce-apex/nodes/brain_18/signal_fusion_notify.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

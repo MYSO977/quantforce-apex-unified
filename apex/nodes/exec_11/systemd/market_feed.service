@@ -1,0 +1,22 @@
+[Unit]
+Description=QuantForce Apex — Market Feed
+After=network.target ibc.service
+Wants=ibc.service
+
+[Service]
+Type=simple
+User=heng
+WorkingDirectory=/home/heng/quantforce-apex
+Environment=PYTHONPATH=/home/heng/quantforce-apex
+Environment=IB_HOST=127.0.0.1
+Environment=IB_PORT=4002
+Environment=QF_PG_HOST=192.168.0.18
+Environment=QF_PG_PASS=newpassword123
+ExecStart=/usr/bin/python3 /home/heng/quantforce-apex/nodes/exec_11/market_feed.py
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
