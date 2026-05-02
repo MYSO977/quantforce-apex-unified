@@ -12,8 +12,8 @@
 |-----------|--------|-------------|
 | Signal pipeline | ✅ Live | 2026-05-02 |
 | PostgreSQL (.11) | ✅ Running | NVMe wired |
-| BB Squeeze scanner | 🔧 Deploying | 2026-05-02 |
-| fed-trading autotuner | 🔧 Deploying | 2026-05-02 |
+| BB Squeeze scanner | ✅ Running | 2026-05-02 |
+| fed-trading autotuner | ✅ Scheduled | 2026-05-02 |
 | IB executor | ❌ Disabled | Manual mode |
 
 ---
@@ -30,9 +30,9 @@
 
 ### Strategy B — BMO Canadian Equities (CAD)
 - **Account:** C$18,000 CAD · BMO InvestorLine RESP
-- **Position size:** C$2,000 fixed · Max 9 positions
-- **Stop / Target:** -2% / +6% · RR 1:3
-- **Hold:** 10-15 trading days
+- **Position size:** C$2,800 CAD (fixed) · Max 6 positions
+- **Stop / Target:** -2% / +7% · RR 1:3.5
+- **Hold:** 8-12 trading days
 - **Universe:** TSX whitelist (94 symbols)
 
 ---
